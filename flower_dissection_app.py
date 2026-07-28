@@ -146,8 +146,8 @@ if mode == "Special cases":
 # ----------------------------------------------------------------------
 if mode == "Glossary":
     st.markdown("### Glossary of flower parts")
-    st.write("Each term has a diagram from this tool and a link to a real photo or "
-             "diagram on Wikimedia Commons, all open licence.")
+    st.write("Each term has a diagram from this tool and a link to its Wikipedia "
+             "article.")
     q = st.text_input("Search", "", placeholder="Type a term, for example stigma").strip().lower()
     IMGDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "glossary_images")
     shown = [g for g in GLOSSARY
