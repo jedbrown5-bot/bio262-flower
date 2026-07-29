@@ -158,7 +158,7 @@ if mode == "Fruits":
             _gif = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 "flower_to_fruit.gif")
             if os.path.exists(_gif):
-                st.image(_gif, caption="A flower ripening into a fruit", width=320)
+                st.image(_gif, caption="The ovary ripening into the fruit", width=340)
     names = [fr["name"] for fr in FRUITS]
     choice = st.selectbox("Choose a fruit type", names, key="fruit_choice")
     entry = next(fr for fr in FRUITS if fr["name"] == choice)
