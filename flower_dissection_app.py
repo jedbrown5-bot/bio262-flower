@@ -26,6 +26,7 @@ from flower3d import build_flower
 from ovary_section import cross_section, PLACENTATION_CHOICES
 from glossary import GLOSSARY, CATEGORIES
 from special_cases import SPECIALS, draw_special, WHY_BRUSH
+from fruits import FRUITS, draw_fruit, draw_overview, OVERVIEW_TEXT
 
 st.set_page_config(page_title="Flower Dissection", page_icon="🌸", layout="wide")
 
@@ -49,7 +50,7 @@ def init():
 init()
 
 MODES = ["Peel and name", "Label the parts", "Count and describe",
-         "Inside the ovary", "Special cases", "Glossary"]
+         "Inside the ovary", "Special cases", "Fruits", "Glossary"]
 
 # ----------------------------------------------------------------------
 # Header
@@ -139,6 +140,50 @@ if mode == "Special cases":
     st.divider()
     with st.expander("Why is the showy part so often the stamens?"):
         st.markdown(WHY_BRUSH)
+    st.stop()
+
+# ----------------------------------------------------------------------
+# Fruits is a full-width tab, handled before the game layout
+# ----------------------------------------------------------------------
+if mode == "Fruits":
+    st.markdown("### Fruit types")
+    st.write("After a flower is pollinated it can ripen into a fruit. See how the "
+             "parts map over, then step through the different fruit types.")
+    with st.expander("How flower parts become fruit parts", expanded=True):
+        oc1, oc2 = st.columns([1.25, 1])
+        with oc1:
+            st.pyplot(draw_overview(), clear_figure=True)
+        with oc2:
+            st.markdown(OVERVIEW_TEXT)
+    names = [fr["name"] for fr in FRUITS]
+    choice = st.selectbox("Choose a fruit type", names, key="fruit_choice")
+    entry = next(fr for fr in FRUITS if fr["name"] == choice)
+    fcl, fcr = st.columns([1.1, 1])
+    with fcl:
+        st.pyplot(draw_fruit(entry["key"]), clear_figure=True)
+    with fcr:
+        st.markdown(f"**{entry['name']}**  \n{entry['group']}")
+        st.write(entry["text"])
+        st.caption(f"[Read more on Wikipedia]({entry['wiki']})")
+        with st.form(f"frform_{entry['key']}"):
+            picks = []
+            for i, qq in enumerate(entry["quiz"]):
+                picks.append(st.radio(qq["q"], ["(choose)"] + qq["options"], index=0,
+                                      key=f"frq_{entry['key']}_{i}"))
+            submitted = st.form_submit_button("Check answers", use_container_width=True)
+        if submitted:
+            correct = 0
+            for qq, p in zip(entry["quiz"], picks):
+                ok = p == qq["answer"]
+                correct += ok
+                st.markdown(f"{'✅' if ok else '❌'} {qq['q']} — "
+                            f"{'correct' if ok else 'answer is ' + qq['answer']}")
+            done = st.session_state.setdefault("fruit_done", set())
+            if entry["key"] not in done:
+                done.add(entry["key"])
+                st.session_state.score += correct
+            (st.success if correct == len(entry["quiz"]) else st.info)(
+                f"{correct} of {len(entry['quiz'])} correct.")
     st.stop()
 
 # ----------------------------------------------------------------------
