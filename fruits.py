@@ -124,7 +124,7 @@ def _draw_drupe(ax):
                  zorder=2.1))
     ax.add_patch(Ellipse((cx, cy), 2.3, 2.7, facecolor=STONE, edgecolor=STONE_DK,
                  linewidth=2, zorder=2.2))
-    _seed(ax, cx, cy, 0.6, 0.95)
+    _seed(ax, cx, cy, 0.6, 0.95, embryo=False)
     _label(ax, "Exocarp (skin)", (cx + 2.4, cy + 1.0), (8.4, 6.0))
     _label(ax, "Mesocarp (flesh)", (cx + 1.6, cy), (8.6, 3.4))
     _label(ax, "Endocarp (stone)", (cx, cy + 1.3), (1.9, 6.1))
@@ -228,7 +228,7 @@ def _draw_achene(ax):
     # achene (left) and nut (right)
     ax.add_patch(Ellipse((3.0, 3.3), 2.2, 3.0, facecolor=DRY, edgecolor=DRY_DK,
                  linewidth=2, zorder=2))
-    _seed(ax, 3.0, 3.2, 0.6, 1.0)
+    _seed(ax, 3.0, 3.2, 0.6, 1.0, embryo=False)
     ax.add_patch(Circle((3.0, 1.75), 0.12, facecolor=DRY_DK, edgecolor="none",
                  zorder=6))
     ax.text(3.0, 0.9, "Achene", fontsize=11, color=INK, ha="center", fontweight="bold")
@@ -237,7 +237,7 @@ def _draw_achene(ax):
 
     ax.add_patch(Circle((7.4, 3.1), 1.5, facecolor=STONE, edgecolor=STONE_DK,
                  linewidth=2.5, zorder=2))
-    _seed(ax, 7.4, 3.1, 0.85, 0.95)
+    _seed(ax, 7.4, 3.1, 0.85, 0.95, embryo=False)
     ax.text(7.4, 0.9, "Nut", fontsize=11, color=INK, ha="center", fontweight="bold")
     _label(ax, "Hard woody\npericarp", (8.7, 3.6), (9.2, 6.0))
 
