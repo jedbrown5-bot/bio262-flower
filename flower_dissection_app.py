@@ -158,7 +158,15 @@ if mode == "Fruits":
             _gif = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 "flower_to_fruit.gif")
             if os.path.exists(_gif):
-                st.image(_gif, caption="The ovary ripening into the fruit", width=340)
+                import base64
+                with open(_gif, "rb") as _f:
+                    _b64 = base64.b64encode(_f.read()).decode()
+                st.markdown(
+                    f'<img src="data:image/gif;base64,{_b64}" width="340" '
+                    f'style="border-radius:6px"><div style="color:#5c6f66;'
+                    f'font-size:13px;margin-top:2px">The ovary ripening into the '
+                    f'fruit</div>',
+                    unsafe_allow_html=True)
     names = [fr["name"] for fr in FRUITS]
     choice = st.selectbox("Choose a fruit type", names, key="fruit_choice")
     entry = next(fr for fr in FRUITS if fr["name"] == choice)

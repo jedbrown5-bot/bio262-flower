@@ -98,18 +98,13 @@ def draw_overview():
     ax.add_patch(Ellipse((10.4, 3.1), 1.9, 2.6, facecolor=STONE, edgecolor=STONE_DK,
                  linewidth=1.4, zorder=2.2))                             # endocarp
     _seed(ax, 10.4, 3.1, 0.6, 0.95, z=4, embryo=False)
-    # persistent style point and sepals
+    # persistent style point
     ax.plot([10.4, 10.4], [5.35, 6.0], color=STYLE, lw=2.4, zorder=3)
-    for s in (-1, 1):
-        ax.add_patch(Polygon([(10.4 + s * 0.5, 0.85), (10.4 + s * 1.15, 0.5),
-                     (10.4 + s * 0.75, 1.35)], closed=True, facecolor="#7aae5c",
-                     edgecolor=RECEPT_DK, lw=1, zorder=3))
     _label(ax, "Exocarp (skin)", (12.3, 4.2), (12.7, 6.0))
     _label(ax, "Mesocarp (flesh)", (11.9, 3.1), (13.3, 3.1))
     _label(ax, "Endocarp", (9.55, 3.9), (8.3, 5.7))
     _label(ax, "Seed", (10.4, 3.1), (8.0, 3.0))
     _label(ax, "Style remnant", (10.4, 5.7), (12.2, 6.5))
-    _label(ax, "Sepals persist", (11.2, 1.0), (13.0, 1.1))
     ax.text(7.0, 0.35, "Pericarp = ovary wall (exocarp, mesocarp, endocarp)  ·  "
             "Seed = ovule (testa, embryo, endosperm)", fontsize=9.5, color=INK,
             ha="center", fontstyle="italic")
