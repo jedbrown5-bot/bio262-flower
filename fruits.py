@@ -74,14 +74,9 @@ def draw_overview():
                  linewidth=3, zorder=2))
     ax.add_patch(Ellipse((2.4, 3.1), 1.7, 2.5, facecolor="#eef7e6", edgecolor="none",
                  zorder=3))
-    # placenta is tissue on the ovary wall; the ovule hangs from it by a funicle
-    ax.plot([2.4, 2.4], [2.02, 2.55], color="#b5791f", lw=1.5, zorder=3.6)
-    ax.add_patch(Ellipse((2.4, 1.92), 0.8, 0.26, facecolor=PLAC, edgecolor="#b5791f",
-                 linewidth=1.2, zorder=4))
-    _seed(ax, 2.4, 3.15, 0.42, 0.62, z=4, embryo=False)
+    _seed(ax, 2.4, 3.1, 0.42, 0.62, z=4, embryo=False)
     _label(ax, "Ovary wall", (1.15, 3.6), (0.9, 5.6))
-    _label(ax, "Ovule", (2.4, 3.15), (4.1, 4.7))
-    _label(ax, "Placenta", (2.4, 1.92), (4.0, 1.3))
+    _label(ax, "Ovule", (2.4, 3.1), (4.1, 4.7))
 
     # --- arrow ---
     ax.add_patch(FancyArrow(5.4, 3.1, 1.5, 0, width=0.12, head_width=0.5,
@@ -105,8 +100,8 @@ def draw_overview():
     _label(ax, "Endocarp", (9.55, 3.9), (8.3, 5.7))
     _label(ax, "Seed", (10.4, 3.1), (8.0, 3.0))
     _label(ax, "Style remnant", (10.4, 5.7), (12.2, 6.5))
-    ax.text(7.0, 0.35, "Pericarp = ovary wall (exocarp, mesocarp, endocarp)  ·  "
-            "Seed = ovule (testa, embryo, endosperm)", fontsize=9.5, color=INK,
+    ax.text(7.0, 0.3, "A simplified view. Some structures, including the seed's "
+            "internal parts, are not shown.", fontsize=9.5, color=INK,
             ha="center", fontstyle="italic")
     fig.subplots_adjust(left=0.02, right=0.98, top=0.98, bottom=0.02)
     return fig
