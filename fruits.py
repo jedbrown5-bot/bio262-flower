@@ -74,7 +74,7 @@ def draw_overview():
                  linewidth=3, zorder=2))
     ax.add_patch(Ellipse((2.4, 3.1), 1.7, 2.5, facecolor="#eef7e6", edgecolor="none",
                  zorder=3))
-    _seed(ax, 2.4, 3.1, 0.42, 0.62, z=4)
+    _seed(ax, 2.4, 3.1, 0.42, 0.62, z=4, embryo=False)
     ax.add_patch(Circle((2.4, 1.75), 0.13, facecolor=PLAC, edgecolor="#b5791f",
                  zorder=4))
     _label(ax, "Ovary wall", (1.15, 3.6), (0.9, 5.6))
@@ -95,7 +95,7 @@ def draw_overview():
                  zorder=2.1))                                            # mesocarp
     ax.add_patch(Ellipse((10.4, 3.1), 1.9, 2.6, facecolor=STONE, edgecolor=STONE_DK,
                  linewidth=1.4, zorder=2.2))                             # endocarp
-    _seed(ax, 10.4, 3.1, 0.6, 0.95, z=4)
+    _seed(ax, 10.4, 3.1, 0.6, 0.95, z=4, embryo=False)
     # persistent style point and sepals
     ax.plot([10.4, 10.4], [5.35, 6.0], color=STYLE, lw=2.4, zorder=3)
     for s in (-1, 1):
