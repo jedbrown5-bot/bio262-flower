@@ -74,12 +74,14 @@ def draw_overview():
                  linewidth=3, zorder=2))
     ax.add_patch(Ellipse((2.4, 3.1), 1.7, 2.5, facecolor="#eef7e6", edgecolor="none",
                  zorder=3))
-    _seed(ax, 2.4, 3.1, 0.42, 0.62, z=4, embryo=False)
-    ax.add_patch(Circle((2.4, 1.75), 0.13, facecolor=PLAC, edgecolor="#b5791f",
-                 zorder=4))
+    # placenta is tissue on the ovary wall; the ovule hangs from it by a funicle
+    ax.plot([2.4, 2.4], [2.02, 2.55], color="#b5791f", lw=1.5, zorder=3.6)
+    ax.add_patch(Ellipse((2.4, 1.92), 0.8, 0.26, facecolor=PLAC, edgecolor="#b5791f",
+                 linewidth=1.2, zorder=4))
+    _seed(ax, 2.4, 3.15, 0.42, 0.62, z=4, embryo=False)
     _label(ax, "Ovary wall", (1.15, 3.6), (0.9, 5.6))
-    _label(ax, "Ovule", (2.4, 3.1), (4.1, 4.7))
-    _label(ax, "Placenta", (2.4, 1.75), (4.0, 1.4))
+    _label(ax, "Ovule", (2.4, 3.15), (4.1, 4.7))
+    _label(ax, "Placenta", (2.4, 1.92), (4.0, 1.3))
 
     # --- arrow ---
     ax.add_patch(FancyArrow(5.4, 3.1, 1.5, 0, width=0.12, head_width=0.5,
@@ -104,7 +106,7 @@ def draw_overview():
                      edgecolor=RECEPT_DK, lw=1, zorder=3))
     _label(ax, "Exocarp (skin)", (12.3, 4.2), (12.7, 6.0))
     _label(ax, "Mesocarp (flesh)", (11.9, 3.1), (13.3, 3.1))
-    _label(ax, "Endocarp", (10.4, 4.0), (8.3, 5.7))
+    _label(ax, "Endocarp", (9.55, 3.9), (8.3, 5.7))
     _label(ax, "Seed", (10.4, 3.1), (8.0, 3.0))
     _label(ax, "Style remnant", (10.4, 5.7), (12.2, 6.5))
     _label(ax, "Sepals persist", (11.2, 1.0), (13.0, 1.1))
